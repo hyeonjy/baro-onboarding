@@ -8,22 +8,22 @@
     {
       "id": "2",
       "title": "두 번째 할 일",
-      "completed": true
+      "completed": false
     },
     {
       "id": "0175",
       "title": "세 번째 할 일",
-      "completed": false
+      "completed": true
     },
     {
       "id": "cc01",
       "title": "마지막",
-      "completed": false
+      "completed": true
     },
     {
-      "id": "93c3",
-      "title": "두둥",
-      "completed": true
+      "id": "ee01",
+      "title": "하하",
+      "completed": false
     }
   ]
 }

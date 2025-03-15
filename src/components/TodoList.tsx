@@ -1,34 +1,15 @@
 "use client";
 
-import { deleteTodo, fetchTodos, toggleTodo } from "@/lib/todoApi";
 import TodoItem from "./TodoItem";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import useTodos from "@/hooks/useTodos";
 
 const TodoList = () => {
-  const {
-    data: todos,
-    isPending,
-    error,
-  } = useQuery({
-    queryKey: ["todos"],
-    queryFn: fetchTodos,
-  });
+  const { fetchTodos, deleteTodo, toggleTodo } = useTodos();
+  const { data: todos, isPending, error } = fetchTodos;
 
-  const queryClient = useQueryClient();
-
-  const { mutate: deleteMutation } = useMutation({
-    mutationFn: deleteTodo,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
-    },
-  });
-
-  const { mutate: toggleMutation } = useMutation({
-    mutationFn: toggleTodo,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
-    },
-  });
+  const { mutate: deleteMutation } = deleteTodo;
+  const { mutate: toggleMutation } = toggleTodo;
 
   if (isPending) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
