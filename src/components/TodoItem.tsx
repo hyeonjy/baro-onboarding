@@ -1,4 +1,4 @@
-import { Todo } from "@/app/types/todo";
+import { Todo } from "@/types/todo";
 import { Trash2, CheckSquare, Square } from "lucide-react";
 
 type TodoItemProps = {

@@ -1,5 +1,6 @@
 import TodoInput from "@/components/TodoInput";
 import TodoList from "@/components/TodoList";
+import TodoProgress from "@/components/TodoProgress";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { fetchTodos } from "@/lib/todoApi";
 import {
@@ -21,6 +22,10 @@ const Home = async () => {
       <h1 className="text-3xl font-bold mb-8 text-center">Todo List</h1>
 
       <HydrationBoundary state={dehydrate(queryClient)}>
+        <ErrorBoundary>
+          <TodoProgress />
+        </ErrorBoundary>
+
         <ErrorBoundary>
           <TodoInput />
         </ErrorBoundary>

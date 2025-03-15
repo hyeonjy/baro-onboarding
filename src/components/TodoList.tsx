@@ -1,8 +1,9 @@
 "use client";
 
-import TodoItem from "./TodoItem";
 import useTodos from "@/hooks/useTodos";
+import TodoItem from "./TodoItem";
 import TodoSkeleton from "./TodoSkeleton";
+import { Todo } from "@/types/todo";
 
 const TodoList = () => {
   const { fetchTodos, deleteTodo, toggleTodo } = useTodos();
@@ -18,7 +19,7 @@ const TodoList = () => {
 
   return (
     <div className="space-y-2">
-      {todos?.map((todo) => (
+      {todos?.map((todo: Todo) => (
         <TodoItem
           key={todo.id}
           todo={todo}

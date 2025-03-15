@@ -1,8 +1,10 @@
-import { Todo } from "@/app/types/todo";
+import { Todo } from "@/types/todo";
 
 export const fetchTodos = async () => {
   try {
-    const response = await fetch("http://localhost:4000/todos");
+    const response = await fetch("http://localhost:4000/todos", {
+      cache: "no-store",
+    });
     if (!response.ok) {
       throw new Error("할 일 목록을 가져오는데 실패했습니다.");
     }
