@@ -1,7 +1,7 @@
 "use client";
 
-import { Todo } from "@/app/types/todo";
 import { fetchTodos } from "@/lib/todoApi";
+import TodoItem from "./TodoItem";
 import { useQuery } from "@tanstack/react-query";
 
 const TodoList = () => {
@@ -18,9 +18,9 @@ const TodoList = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div>
-      {todos.map((todo: Todo) => (
-        <h1 key={todo.id}>{todo.title}</h1>
+    <div className="space-y-2">
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </div>
   );
