@@ -10,7 +10,7 @@ const useToggleTodo = () => {
       queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
     onError: (error) => {
-      console.error(error.message);
+      throw error;
     },
   });
 };
