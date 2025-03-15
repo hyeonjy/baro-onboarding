@@ -1,8 +1,8 @@
 "use client";
 
 import TodoItem from "./TodoItem";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useTodos from "@/hooks/useTodos";
+import TodoSkeleton from "./TodoSkeleton";
 
 const TodoList = () => {
   const { fetchTodos, deleteTodo, toggleTodo } = useTodos();
@@ -11,12 +11,13 @@ const TodoList = () => {
   const { mutate: deleteMutation } = deleteTodo;
   const { mutate: toggleMutation } = toggleTodo;
 
-  if (isPending) return <div>Loading...</div>;
+  if (isPending) return <TodoSkeleton />;
   if (error) return <div>Error: {error.message}</div>;
+  if (!todos) return null;
 
   return (
     <div className="space-y-2">
-      {todos.map((todo) => (
+      {todos?.map((todo) => (
         <TodoItem
           key={todo.id}
           todo={todo}
