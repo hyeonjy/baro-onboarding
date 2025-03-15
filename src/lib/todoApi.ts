@@ -13,3 +13,24 @@ export const fetchTodos = async () => {
     throw error;
   }
 };
+
+export const addTodo = async (title: string) => {
+  try {
+    const response = await fetch("http://localhost:4000/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, completed: false }),
+    });
+
+    if (!response.ok) {
+      throw new Error("할 일을 추가하는데 실패했습니다.");
+    }
+
+    const newTodo: Todo = await response.json();
+    return newTodo;
+  } catch (error) {
+    throw error;
+  }
+};
