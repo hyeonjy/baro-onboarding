@@ -74,3 +74,27 @@ export const toggleTodo = async ({
     throw new Error("할 일을 완료 상태로 변경하는데 실패했습니다.");
   }
 };
+
+export const updateTodo = async ({
+  id,
+  title,
+}: {
+  id: string;
+  title: string;
+}) => {
+  try {
+    const response = await fetch(`http://localhost:4000/todos/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title }),
+    });
+
+    if (!response.ok) {
+      throw new Error("할 일을 업데이트하는데 실패했습니다.");
+    }
+  } catch (error) {
+    throw new Error("할 일을 업데이트하는데 실패했습니다.");
+  }
+};

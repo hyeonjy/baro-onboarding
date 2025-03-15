@@ -6,15 +6,16 @@ import TodoSkeleton from "./TodoSkeleton";
 import { Todo } from "@/types/todo";
 
 const TodoList = () => {
-  const { fetchTodos, deleteTodo, toggleTodo } = useTodos();
+  const { fetchTodos, deleteTodo, toggleTodo, updateTodo } = useTodos();
   const { data: todos, isPending, error } = fetchTodos;
 
   const { mutate: deleteMutation, error: deleteError } = deleteTodo;
   const { mutate: toggleMutation, error: toggleError } = toggleTodo;
+  const { mutate: updateMutation, error: updateError } = updateTodo;
 
   if (isPending) return <TodoSkeleton />;
-  if (error || deleteError || toggleError)
-    throw error || deleteError || toggleError;
+  if (error || deleteError || toggleError || updateError)
+    throw error || deleteError || toggleError || updateError;
   if (!todos) return null;
 
   return (
@@ -25,6 +26,7 @@ const TodoList = () => {
           todo={todo}
           onDelete={deleteMutation}
           onToggle={toggleMutation}
+          onUpdate={updateMutation}
         />
       ))}
     </div>

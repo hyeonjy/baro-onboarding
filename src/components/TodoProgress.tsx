@@ -5,7 +5,9 @@ import { Todo } from "@/types/todo";
 
 const TodoProgress = () => {
   const { fetchTodos } = useTodos();
-  const { data: todos = [] } = fetchTodos;
+  const { data: todos = [], error } = fetchTodos;
+
+  if (error) throw error;
 
   const totalTodos = todos.length;
   const completedTodos = todos.filter((todo: Todo) => todo.completed).length;
