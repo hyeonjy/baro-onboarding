@@ -18,11 +18,6 @@
     {
       "id": "cc01",
       "title": "마지막",
-      "completed": true
-    },
-    {
-      "id": "ee01",
-      "title": "하하",
       "completed": false
     }
   ]

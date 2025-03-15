@@ -8,11 +8,12 @@ const TodoList = () => {
   const { fetchTodos, deleteTodo, toggleTodo } = useTodos();
   const { data: todos, isPending, error } = fetchTodos;
 
-  const { mutate: deleteMutation } = deleteTodo;
-  const { mutate: toggleMutation } = toggleTodo;
+  const { mutate: deleteMutation, error: deleteError } = deleteTodo;
+  const { mutate: toggleMutation, error: toggleError } = toggleTodo;
 
   if (isPending) return <TodoSkeleton />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error || deleteError || toggleError)
+    throw error || deleteError || toggleError;
   if (!todos) return null;
 
   return (

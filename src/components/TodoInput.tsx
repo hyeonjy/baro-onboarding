@@ -7,7 +7,7 @@ const TodoInput = () => {
   const [title, setTitle] = useState<string>("");
 
   const { addTodo } = useTodos();
-  const { mutate: addMutation } = addTodo;
+  const { mutate: addMutation, error: addError } = addTodo;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,6 +15,8 @@ const TodoInput = () => {
     addMutation(title);
     setTitle("");
   };
+
+  if (addError) throw addError;
 
   return (
     <form className="flex gap-2 mb-6" onSubmit={handleSubmit}>

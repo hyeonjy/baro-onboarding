@@ -11,6 +11,7 @@ const useAddTodo = () => {
     },
     onError: (error) => {
       console.error(error.message);
+      throw error;
     },
   });
 };

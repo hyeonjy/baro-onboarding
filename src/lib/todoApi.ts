@@ -9,8 +9,8 @@ export const fetchTodos = async () => {
 
     const todos: Todo[] = await response.json();
     return todos;
-  } catch (error) {
-    throw error;
+  } catch (error: unknown) {
+    throw new Error("할 일 목록을 가져오는데 실패했습니다.");
   }
 };
 
@@ -31,7 +31,7 @@ export const addTodo = async (title: string) => {
     const newTodo: Todo = await response.json();
     return newTodo;
   } catch (error) {
-    throw error;
+    throw new Error("할 일을 추가하는데 실패했습니다.");
   }
 };
 
@@ -45,7 +45,7 @@ export const deleteTodo = async (id: string) => {
       throw new Error("할 일을 삭제하는데 실패했습니다.");
     }
   } catch (error) {
-    throw error;
+    throw new Error("할 일을 삭제하는데 실패했습니다.");
   }
 };
 
@@ -69,6 +69,6 @@ export const toggleTodo = async ({
       throw new Error("할 일을 완료 상태로 변경하는데 실패했습니다.");
     }
   } catch (error) {
-    throw error;
+    throw new Error("할 일을 완료 상태로 변경하는데 실패했습니다.");
   }
 };
