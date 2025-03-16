@@ -23,11 +23,11 @@ const Home = async () => {
 
       <HydrationBoundary state={dehydrate(queryClient)}>
         <ErrorBoundary>
-          <TodoProgress />
+          <TodoInput />
         </ErrorBoundary>
 
         <ErrorBoundary>
-          <TodoInput />
+          <TodoProgress />
         </ErrorBoundary>
 
         <ErrorBoundary>
