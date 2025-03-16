@@ -1,8 +1,10 @@
 import { Todo } from "@/types/todo";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL as string;
+
 export const fetchTodos = async () => {
   try {
-    const response = await fetch("http://localhost:4000/todos", {
+    const response = await fetch(BASE_URL, {
       cache: "no-store",
     });
     if (!response.ok) {
@@ -18,7 +20,7 @@ export const fetchTodos = async () => {
 
 export const addTodo = async (title: string) => {
   try {
-    const response = await fetch("http://localhost:4000/todos", {
+    const response = await fetch(BASE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +41,7 @@ export const addTodo = async (title: string) => {
 
 export const deleteTodo = async (id: string) => {
   try {
-    const response = await fetch(`http://localhost:4000/todos/${id}`, {
+    const response = await fetch(`${BASE_URL}/${id}`, {
       method: "DELETE",
     });
 
@@ -59,7 +61,7 @@ export const toggleTodo = async ({
   completed: boolean;
 }) => {
   try {
-    const response = await fetch(`http://localhost:4000/todos/${id}`, {
+    const response = await fetch(`${BASE_URL}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -83,7 +85,7 @@ export const updateTodo = async ({
   title: string;
 }) => {
   try {
-    const response = await fetch(`http://localhost:4000/todos/${id}`, {
+    const response = await fetch(`${BASE_URL}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
