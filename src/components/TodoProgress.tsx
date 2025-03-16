@@ -18,8 +18,12 @@ const TodoProgress = () => {
   return (
     <div className="mb-6 p-4 bg-white rounded-lg shadow">
       <div className="flex justify-between mb-2">
-        <span className="text-gray-700">남은 할 일: {remainingTodos}개</span>
-        <span className="text-gray-700">진행률: {progressPercentage}%</span>
+        <span className="text-gray-700 cursor-default">
+          남은 할 일: {remainingTodos}개
+        </span>
+        <span className="text-gray-700 cursor-default">
+          진행률: {progressPercentage}%
+        </span>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2.5">
         <div

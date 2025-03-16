@@ -25,7 +25,7 @@ const TodoInput = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="이곳에 해야할 일을 적어주세요"
-        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-indigo-600"
+        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-indigo-600 dark:text-black"
       />
       <button className="bg-indigo-600 text-white p-4 rounded-lg text-2xl w-[46px] h-[46px] flex items-center justify-center">
         +

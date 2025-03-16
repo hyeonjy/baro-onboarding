@@ -24,7 +24,11 @@ export const ViewTodoItem = ({
       </button>
 
       <div className="flex items-center justify-between flex-1">
-        <span className={`${todo.completed ? "line-through" : ""}`}>
+        <span
+          className={`${
+            todo.completed ? "line-through" : ""
+          } dark:text-gray-700 dark:hover:text-black cursor-default`}
+        >
           {todo.title}
         </span>
 
